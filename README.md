@@ -11,7 +11,9 @@ Version 的设计初衷是用来整合相同剪辑版本的多个文件版本的
 
 例如，目前的 Plex 移动端和电视端都不会显示杜比视界（DoVi）这个信息，我们可以通过把动态范围写入 Edition 来实现在移动端和电视端显示杜比视界信息，这样我们就可以区分哪些影片是杜比视界的版本了。再如，Plex 的资料库排序目前仅支持单一排序，你无法在使用标题、观众评分排序的同时显示电影的分辨率或码率等信息，同样我们也可以通过 Edition 来显示这些额外信息。
 
-使用 Edition Manager for Plex（下文简称 EMP）可以自动获取电影和电影文件的信息，并将指定的信息写入 Edition 字段，从而丰富电影信息的展示功能。你可以通过 EMP 将电影的剪辑版本、发行版本、片源版本、分辨率、动态范围、视频编码、帧率、音频编码、比特率、大小、国家、内容分级、评分或时长写入电影的 Edition 字段，而且还支持自选模块和自定义排序。这一切都将通过 EMP 自动实现，无需编辑或修改文件名。
+使用 Edition Manager for Plex（下文简称 EMP）可以自动获取电影和电影文件的信息，并将指定的信息写入 Edition 字段，从而丰富电影信息的展示功能。你可以通过 EMP 将电影的剪辑版本、发行版本、片源版本、分辨率、动态范围、视频编码、帧率、音频编码、比特率、大小、国家、内容分级、评分或时长写入电影的 Edition 字段，而且还支持自选模块和自定义排序。
+
+这一切都将通过 EMP 自动实现，无需编辑或修改文件名。这意味着你不需要在文件名中按照 `{edition-Edition Title}` 这样的格式添加版本信息，EMP 会通过文件名或电影的元数据自动查找相关的信息，然后将需要的信息写入 Edition 字段，对文件的命名没有特殊要求。
 
 你可以通过 EMP 按照自己的需求和喜好为你的电影增加额外的展示信息，我们提供了写入 Edition 和移除 Edition 的功能，你可以随性尝试任何组合方式，也可以随时一键移除所有的 Edition 信息。虽然 Edition 是 Plex Pass 的专属功能，但是通过 EMP，无需 Pass 订阅即可使用 Edition 功能。
 
@@ -434,10 +436,12 @@ PC 用户也可以通过提供的快速启动脚本来执行任务：
 - 请确保你提供了正确的 Plex 服务器地址和正确的 X-Plex-Token。
 - 请确保你提供了正确的库名，并按要求进行了填写。
 - 请确保你按照要求设置了正确的语言和模块信息。
-- 如果脚本无法连接到 Plex 服务器，请检查你的网络连接，并确保服务器可以访问。
-- 请使用服务器管理员账号的 X-Plex-Token 运行脚本，以确保你拥有足够的权限进行操作。
+- 如果无法连接到 Plex 服务器，请检查你的网络连接，并确保服务器可以访问。如果你是通过 Docker 容器运行的，也可以尝试使用 `host` 模式重新部署容器运行。
+- 请使用服务器管理员账号的 X-Plex-Token，以确保你拥有足够的权限进行操作。
 - 版本信息将在添加后被锁定，若有修改需求，Plex Pass 订阅用户可以手动解锁版本信息，然后进行修改；非 Plex Pass 订阅用户不支持手动修改版本信息。若要为所有电影修改版本信息的模块或排序，请先重置版本信息，然后修改配置文件，再重新写入版本信息。
+- 修改配置文件后，需要重启容器，新的配置信息才会生效。
 - Windows 用户运行 Python 脚本后，若没有任何反应，请将运行命令或启动脚本中的 `python3` 替换为 `python` 再运行。
+- 如需使用 `为新增电影添加版本信息` 模式，请确保你在服务器的 `设置 - 网络` 中勾选了 `Webhooks` 选项。
 
 ## 赞赏
 如果你觉得这个项目对你有用，可以请我喝杯咖啡。如果你喜欢这个项目，可以给我一个⭐️。谢谢你的支持！
@@ -462,7 +466,9 @@ The Edition is displayed below the title, after the year, and also in the "More 
 
 For instance, currently, Plex's mobile and TV apps do not display Dolby Vision information. We can achieve this by writing the dynamic range into the Edition, allowing Dolby Vision information to be displayed on mobile and TV apps. This way, we can distinguish which movies are Dolby Vision versions. Additionally, Plex's library sorting currently only supports single sorting criteria. You cannot display the movie's resolution or bitrate information while sorting by title or audience rating. Similarly, we can display this extra information through Edition.
 
-Using Edition Manager for Plex (hereinafter referred to as EMP), you can automatically retrieve information about movies and movie files and write the specified information into the Edition field, enriching the display functionality of movie information. With EMP, you can write the movie's Cut Version, Release Version, Source Version, Resolution, Dynamic Range, Video Codec, Frame Rate, Audio Codec, Bitrate, Size, Country, Content Rating, Audience Rating, or Duration into the Edition field. It also supports custom modules and custom sorting. All of this will be automated through EMP, without the need to edit or modify filenames.
+Using Edition Manager for Plex (hereinafter referred to as EMP), you can automatically retrieve information about movies and movie files and write the specified information into the Edition field, enriching the display functionality of movie information. With EMP, you can write the movie's Cut Version, Release Version, Source Version, Resolution, Dynamic Range, Video Codec, Frame Rate, Audio Codec, Bitrate, Size, Country, Content Rating, Audience Rating, or Duration into the Edition field. It also supports custom modules and custom sorting. 
+
+All of this will be automatically handled by EMP, without the need to edit or modify filenames. This means you don't need to add Edition information to the filename in the format `{edition-Edition Title}`. EMP will automatically search for relevant information through filenames or the movie's metadata, and then write the required details into the Edition field. There are no specific requirements for naming files.
 
 You can use EMP to add extra display information to your movies according to your needs and preferences. We provide features for writing and removing Editions, allowing you to try any combination freely and remove all Edition information with one click at any time. Although Edition is an exclusive feature for Plex Pass, EMP allows you to use the Edition feature without a Pass subscription.
 
@@ -886,10 +892,12 @@ If the scripts fail to run as scheduled or on startup, you may need to replace `
 - Ensure you provide the correct Plex server address and the correct X-Plex-Token.
 - Ensure you provide the correct library names and fill them in as required.
 - Ensure you correctly set the language and module information as required.
-- If the script cannot connect to the Plex server, check your network connection and ensure the server is accessible.
-- Use the server administrator account's X-Plex-Token to run the script to ensure you have sufficient permissions for operations.
+- If the script or container cannot connect to the Plex server, please check your network connection and ensure the server is accessible. If you are running it through a Docker container, you can also try redeploying the container using the `host` mode.
+- Please use the X-Plex-Token of the server administrator account to ensure you have sufficient permissions to perform operations.
 - The edition field will be locked after being added. If modifications are needed, Plex Pass subscribers can manually unlock the edition field and then modify it; non-Plex Pass subscribers do not support manual modification of the edition field. To modify the edition modules or their order for all movies, first reset the editions, then modify the configuration file, and finally rewrite the editions.
+- After modifying the configuration file, you need to restart the container for the new configuration to take effect.
 - If Windows users see no response after running the Python script, try replacing `python3` with `python` in the run command or start script.
+- To use the `add editions for new movies` mode, please ensure you have checked the `Webhooks` option in the server's `Settings - Network` section.
 
 ## Support
 If you found this helpful, consider buying me a coffee or giving it a ⭐️. Thanks for your support!
