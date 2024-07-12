@@ -255,13 +255,13 @@ EMP 共有 `为所有电影添加版本信息（all）`、`为新增电影添加
 address = http://127.0.0.1:32400
 # Plex 服务器的 token，用于身份验证
 token = xxxxxxxxxxxxxxxxxxxx
-# 指定需要跳过的资料库，格式为 库名1；库名2；库名3，若没有需要跳过的资料库，可以留空
+# 指定需要跳过的资料库，格式为库名1；库名2；库名3，若没有需要跳过的资料库，可以留空
 skip_libraries = 云电影；演唱会
-# 语言设置，'zh' 代表中文，'en' 代表英文
+# 语言设置，zh 代表中文，en 代表英文
 language = zh
 
 [modules]
-# 指定需要写入的模块及其排序，格式为 模块1；模块2；模块3，可选模块包括剪辑版本、发行版本、片源版本、分辨率、动态范围、视频编码、帧率、音频编码、比特率、大小、国家、内容分级、评分、时长
+# 指定需要写入的模块及其排序，格式为模块1；模块2；模块3，可选模块包括剪辑版本、发行版本、片源版本、分辨率、动态范围、视频编码、帧率、音频编码、比特率、大小、国家、内容分级、评分、时长
 order = 片源版本；动态范围
 ```
 由于 EMP 只会对电影类型的资料库进行处理，所以在指定需要跳过的资料库时，指定需要跳过的电影类型的资料库即可。写入版本信息的模块没有数量限制，可以根据需要自行选配。
@@ -446,7 +446,7 @@ PC 用户也可以通过提供的快速启动脚本来执行任务：
 ## 赞赏
 如果你觉得这个项目对你有用，可以请我喝杯咖啡。如果你喜欢这个项目，可以给我一个⭐️。谢谢你的支持！
 
-<img width="399" alt="赞赏" src="https://github.com/x1ao4/edition-manager-for-plex/assets/112841659/be5aa968-3dc3-4dcc-91cc-506354000a6a">
+<img width="399" alt="赞赏" src="https://github.com/x1ao4/edition-manager-for-plex/assets/112841659/b9e79a88-f2af-4c3a-8278-479454c6393a">
 <br><br>
 <a href="#edition-manager-for-plex-zh">回到顶部</a>
 <br>
@@ -472,7 +472,7 @@ All of this will be automatically handled by EMP, without the need to edit or mo
 
 You can use EMP to add extra display information to your movies according to your needs and preferences. We provide features for writing and removing Editions, allowing you to try any combination freely and remove all Edition information with one click at any time. Although Edition is an exclusive feature for Plex Pass, EMP allows you to use the Edition feature without a Pass subscription.
 
-## Demo
+## Examples
 Configuration `order = Cut;Release` looks like this:
 
 ![Cut Release](https://github.com/x1ao4/edition-manager-for-plex/assets/112841659/28047dfe-a058-4cf3-8a32-ca8882edae15)
@@ -703,8 +703,8 @@ The EMP operates in three modes: `add editions for all movies (all)`, `add editi
 
 Note: The `add editions for new movies` mode requires the server administrator account to be subscribed to Plex Pass in order to use.
 
-## Config
-Before using EMP, please configure `/config/config.ini` according to the following example:
+## Configuration
+Before using EMP, please configure the `/config/config.ini` file according to the following tips (example).
 ```
 [server]
 # Address of the Plex server, formatted as http://server IP address:32400 or http(s)://domain:port
@@ -713,7 +713,7 @@ address = http://127.0.0.1:32400
 token = xxxxxxxxxxxxxxxxxxxx
 # Specify libraries to skip, format should be LibraryName1;LibraryName2;LibraryName3, leave empty if no libraries need to be skipped
 skip_libraries = Cloud Movie;Concert
-# Language setting, 'zh' for Chinese, 'en' for English
+# Language setting, zh for Chinese, en for English
 language = en
 
 [modules]
@@ -858,7 +858,7 @@ PC users can quickly start tasks by double-clicking the provided scripts:
 - To run the `add editions for new movies` task, double-click `emp-new.bat (Win)` or `emp-new.command (Mac)`.
 - To run the `reset editions for all movies` task, double-click `emp-reset.bat (Win)` or `emp-reset.command (Mac)`.
 
-#### Automation
+#### Auto-Run Setup
 For convenience, you can set up EMP to run automatically using crontab or other task scheduling tools.
 
 - Add Editions for All Movies (Mac)
@@ -902,6 +902,6 @@ If the scripts fail to run as scheduled or on startup, you may need to replace `
 ## Support
 If you found this helpful, consider buying me a coffee or giving it a ⭐️. Thanks for your support!
 
-<img width="399" alt="Support" src="https://github.com/x1ao4/edition-manager-for-plex/assets/112841659/be5aa968-3dc3-4dcc-91cc-506354000a6a">
+<img width="399" alt="Support" src="https://github.com/x1ao4/edition-manager-for-plex/assets/112841659/b9e79a88-f2af-4c3a-8278-479454c6393a">
 <br><br>
 <a href="#edition-manager-for-plex-en">Back to Top</a>
